@@ -98,4 +98,5 @@ model User {
   id       Int      @id @default(autoincrement()) // Unikal ID
   username String                                 // Foydalanuvchi nomi
   password String                                 // Parol
+  
 }
