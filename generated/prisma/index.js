@@ -33,11 +33,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 6.6.0
- * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+ * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
   client: "6.6.0",
-  engine: "f676762280b54cd07c770017ed3711ddde35f37a"
+  engine: "173f8d54f8d52e692c7e27e72a88314ec7aeff60"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -224,12 +224,11 @@ const config = {
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.6.0",
-  "engineVersion": "f676762280b54cd07c770017ed3711ddde35f37a",
+  "engineVersion": "173f8d54f8d52e692c7e27e72a88314ec7aeff60",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -238,8 +237,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n// === Worker model ===\n// Ishchilar haqida ma'lumotlar\nmodel Worker {\n  id           Int      @id @default(autoincrement()) // Unikal ID\n  date         DateTime @default(now()) // Ma'lumot kiritilgan sana\n  workerCount  Int // Ishchilar soni\n  salaryPerOne Float // Har bir ishchining ish haqi\n  totalSalary  Float // Umumiy ish haqi\n}\n\n// === Drainage model ===\n// Drenaj ishlariga to‘langan ma’lumotlar\nmodel Drainage {\n  id          Int      @id @default(autoincrement()) // Unikal ID\n  date        DateTime @default(now()) // Xizmat ko‘rsatilgan sana\n  hoursWorked Float // Necha soat ishlagan\n  totalSalary Float // Umumiy to‘lov summasi\n}\n\n// === Energy model ===\n// Elektr yoki boshqa energiya uchun to‘lovlar\nmodel Energy {\n  id         Int      @id @default(autoincrement()) // Unikal ID\n  date       DateTime // To‘lov sanasi\n  amountPaid Float // To‘langan summa\n  comment    String // Izoh (masalan, “elektr energiyasi uchun”)\n}\n\n// === Food model ===\n// Oziq-ovqat xaridlari\nmodel Food {\n  id       Int      @id @default(autoincrement()) // Unikal ID\n  date     DateTime @default(now()) // Xarid sanasi\n  shopName String? // Qaysi do‘kondan olingani (ixtiyoriy)\n  price    Float // Oziq-ovqat narxi\n}\n\n// === Tax model ===\n// Turli soliq to‘lovlari\nmodel Tax {\n  id         Int      @id @default(autoincrement()) // Unikal ID\n  date       DateTime // To‘lov sanasi\n  amountPaid Float // To‘langan summa\n  comment    String // Soliq turi haqida izoh\n}\n\n// === Transport model ===\n// Transport bilan bog‘liq xizmatlar\nmodel Transport {\n  id            Int      @id @default(autoincrement()) // Unikal ID\n  date          DateTime // Xizmat sanasi\n  transportType String // Transport turi (masalan, yuk mashinasi)\n  comment       String // Izoh (qaerga bordi, nima uchun)\n}\n\n// === Repair model ===\n// Ta’mirlash ishlari uchun xarajatlar\nmodel Repair {\n  id      Int      @id @default(autoincrement()) // Unikal ID\n  date    DateTime // Ta’mir kuni\n  price   Float // Ta’mir uchun to‘langan summa\n  comment String // Ta’mir haqida izoh (masalan, “traktor g‘ildiragi”)\n}\n\n// === Oil model ===\n// Yoqilg‘i xaridlari\nmodel Oil {\n  id      Int      @id @default(autoincrement()) // Unikal ID\n  date    DateTime // Xarid sanasi\n  price   Float // Yoqilg‘i narxi\n  comment String // Izoh (qaysi texnikaga ishlatilgan)\n}\n\n// === Fertilizer model ===\n// Mineral va mahalliy o‘g‘itlar\nmodel Fertilizer {\n  id   Int      @id @default(autoincrement()) // Unikal ID\n  date DateTime // Xarid sanasi\n  type String // 'mineral' yoki 'local'\n\n  machineCount Int? // Mahalliy o‘g‘it uchun mashina soni\n  tonAmount    Float? // Mineral o‘g‘it uchun tonna miqdori\n\n  comment String // Izoh (o‘g‘it turi, joyi va  \n}\n\nmodel User {\n  id       Int    @id @default(autoincrement()) // Unikal ID\n  username String // Foydalanuvchi nomi\n  password String // Parol\n}\n",
-  "inlineSchemaHash": "7677ae02622ef2322180e5ac22eb14fd844bab31740a3c1e7df63ccfc3221f38",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n// === Worker model ===\n// Ishchilar haqida ma'lumotlar\nmodel Worker {\n  id           Int      @id @default(autoincrement()) // Unikal ID\n  date         DateTime @default(now()) // Ma'lumot kiritilgan sana\n  workerCount  Int // Ishchilar soni\n  salaryPerOne Float // Har bir ishchining ish haqi\n  totalSalary  Float // Umumiy ish haqi\n}\n\n// === Drainage model ===\n// Drenaj ishlariga to‘langan ma’lumotlar\nmodel Drainage {\n  id          Int      @id @default(autoincrement()) // Unikal ID\n  date        DateTime @default(now()) // Xizmat ko‘rsatilgan sana\n  hoursWorked Float // Necha soat ishlagan\n  totalSalary Float // Umumiy to‘lov summasi\n}\n\n// === Energy model ===\n// Elektr yoki boshqa energiya uchun to‘lovlar\nmodel Energy {\n  id         Int      @id @default(autoincrement()) // Unikal ID\n  date       DateTime // To‘lov sanasi\n  amountPaid Float // To‘langan summa\n  comment    String // Izoh (masalan, “elektr energiyasi uchun”)\n}\n\n// === Food model ===\n// Oziq-ovqat xaridlari\nmodel Food {\n  id       Int      @id @default(autoincrement()) // Unikal ID\n  date     DateTime @default(now()) // Xarid sanasi\n  shopName String? // Qaysi do‘kondan olingani (ixtiyoriy)\n  price    Float // Oziq-ovqat narxi\n}\n\n// === Tax model ===\n// Turli soliq to‘lovlari\nmodel Tax {\n  id         Int      @id @default(autoincrement()) // Unikal ID\n  date       DateTime // To‘lov sanasi\n  amountPaid Float // To‘langan summa\n  comment    String // Soliq turi haqida izoh\n}\n\n// === Transport model ===\n// Transport bilan bog‘liq xizmatlar\nmodel Transport {\n  id            Int      @id @default(autoincrement()) // Unikal ID\n  date          DateTime // Xizmat sanasi\n  transportType String // Transport turi (masalan, yuk mashinasi)\n  comment       String // Izoh (qaerga bordi, nima uchun)\n}\n\n// === Repair model ===\n// Ta’mirlash ishlari uchun xarajatlar\nmodel Repair {\n  id      Int      @id @default(autoincrement()) // Unikal ID\n  date    DateTime // Ta’mir kuni\n  price   Float // Ta’mir uchun to‘langan summa\n  comment String // Ta’mir haqida izoh (masalan, “traktor g‘ildiragi”)\n}\n\n// === Oil model ===\n// Yoqilg‘i xaridlari\nmodel Oil {\n  id      Int      @id @default(autoincrement()) // Unikal ID\n  date    DateTime // Xarid sanasi\n  price   Float // Yoqilg‘i narxi\n  comment String // Izoh (qaysi texnikaga ishlatilgan)\n}\n\n// === Fertilizer model ===\n// Mineral va mahalliy o‘g‘itlar\nmodel Fertilizer {\n  id   Int      @id @default(autoincrement()) // Unikal ID\n  date DateTime // Xarid sanasi\n  type String // 'mineral' yoki 'local'\n\n  machineCount Int? // Mahalliy o‘g‘it uchun mashina soni\n  tonAmount    Float? // Mineral o‘g‘it uchun tonna miqdori\n\n  comment String // Izoh (o‘g‘it turi, joyi va  \n}\n\nmodel User {\n  id       Int    @id @default(autoincrement()) // Unikal ID\n  username String // Foydalanuvchi nomi\n  password String // Parol\n}\n",
+  "inlineSchemaHash": "7b1df420461be740570a0c047aa1bd5b288d5dc3e35d176bdf6ec650d44c2ac1",
   "copyEngine": true
 }
 
