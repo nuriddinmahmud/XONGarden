@@ -201,7 +201,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Bootcamp Result\\Projects\\Loyiha\\XON's GARDEN\\generated\\prisma",
+      "value": "C:\\Bootcamp Result\\Projects\\Loyiha\\XONs GARDEN\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -215,7 +215,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Bootcamp Result\\Projects\\Loyiha\\XON's GARDEN\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Bootcamp Result\\Projects\\Loyiha\\XONs GARDEN\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -229,11 +229,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:1234@localhost:5432/xonsgarden?schema=public"
+        "value": null
       }
     }
   },

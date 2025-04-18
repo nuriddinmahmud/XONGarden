@@ -2,7 +2,7 @@ import prisma from "../config/database.js";
 import {
   createWorkerValidation,
   updateWorkerValidation,
-} from "../validations/worker.joi.js";
+} from "../validations/workers.joi.js";
 
 export const createWorker = async (req, res) => {
   try {

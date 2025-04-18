@@ -2,7 +2,7 @@ import prisma from "../config/database.js";
 import {
   createFoodValidation,
   updateFoodValidation,
-} from "../validations/food.joi.js";
+} from "../validations/foods.joi.js";
 
 export const createFood = async (req, res) => {
   try {

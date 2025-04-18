@@ -1,18 +1,154 @@
-import express from "express";
+import prisma from "../config/database.js";
 import {
-  createFertilizer,
-  getAllFertilizers,
-  getFertilizerById,
-  updateFertilizer,
-  deleteFertilizer,
-} from "../controllers/fertilizer.controller.js";
+  createFertilizerValidation,
+  updateFertilizerValidation,
+} from "../validations/fertilizer.joi.js";
 
-const router = express.Router();
+export const createFertilizer = async (req, res) => {
+  try {
+    const { error } = createFertilizerValidation.validate(req.body);
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        message: error.details[0].message,
+        data: null,
+      });
+    }
 
-router.post("/", createFertilizer);
-router.get("/", getAllFertilizers);
-router.get("/:id", getFertilizerById);
-router.patch("/:id", updateFertilizer); // PATCH, not PUT
-router.delete("/:id", deleteFertilizer);
+    const fertilizer = await prisma.fertilizer.create({
+      data: req.body,
+    });
 
-export default router;
+    res.status(201).json({
+      success: true,
+      message: "Fertilizer record created successfully.",
+      data: fertilizer,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+};
+
+export const getAllFertilizers = async (req, res) => {
+  try {
+    const fertilizers = await prisma.fertilizer.findMany({
+      orderBy: { date: "desc" },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "All fertilizer records fetched successfully.",
+      data: fertilizers,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+};
+
+export const getFertilizerById = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const fertilizer = await prisma.fertilizer.findUnique({
+      where: { id },
+    });
+
+    if (!fertilizer) {
+      return res.status(404).json({
+        success: false,
+        message: "Fertilizer record not found.",
+        data: null,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Fertilizer record fetched successfully.",
+      data: fertilizer,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+};
+
+export const updateFertilizer = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const { error } = updateFertilizerValidation.validate(req.body);
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        message: error.details[0].message,
+        data: null,
+      });
+    }
+
+    const existing = await prisma.fertilizer.findUnique({ where: { id } });
+    if (!existing) {
+      return res.status(404).json({
+        success: false,
+        message: "Fertilizer record not found.",
+        data: null,
+      });
+    }
+
+    const updated = await prisma.fertilizer.update({
+      where: { id },
+      data: req.body,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Fertilizer record updated successfully.",
+      data: updated,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+};
+
+export const deleteFertilizer = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const existing = await prisma.fertilizer.findUnique({ where: { id } });
+    if (!existing) {
+      return res.status(404).json({
+        success: false,
+        message: "Fertilizer record not found.",
+        data: null,
+      });
+    }
+
+    await prisma.fertilizer.delete({ where: { id } });
+
+    res.status(200).json({
+      success: true,
+      message: "Fertilizer record deleted successfully.",
+      data: null,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+};
