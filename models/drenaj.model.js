@@ -1,3 +1,4 @@
+import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 
 const Drainage = sequelize.define(
@@ -16,19 +17,13 @@ const Drainage = sequelize.define(
     },
 
     hoursWorked: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
-      validate: {
-        min: 0.01,
-      },
     },
 
     totalSalary: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
-      validate: {
-        min: 0.01,
-      },
     },
   },
 

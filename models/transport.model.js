@@ -7,19 +7,23 @@ const Transport = sequelize.define('Transport', {
     autoIncrement: true,
     primaryKey: true,
   },
+
   date: {
     type: DataTypes.DATE,
     allowNull: false,
   },
+
   transportType: {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
   comment: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-}, {
+}
+, {
   tableName: 'transports',
   timestamps: false,
 });
