@@ -26,7 +26,7 @@ const Fertilizer = sequelize.define(
     },
 
     tonAmount: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
 

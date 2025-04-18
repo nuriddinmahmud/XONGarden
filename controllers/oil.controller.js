@@ -1,8 +1,9 @@
-import prisma from "../config/database.js";
 import {
   createOilValidation,
   updateOilValidation,
 } from "../validations/oil.joi.js";
+
+import Oil from "../models/oil.model.js";
 
 export const createOil = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ export const createOil = async (req, res) => {
       });
     }
 
-    const oil = await prisma.oil.create({
+    const oil = await Oil.create({
       data: req.body,
     });
 
@@ -35,7 +36,7 @@ export const createOil = async (req, res) => {
 
 export const getAllOils = async (req, res) => {
   try {
-    const oils = await prisma.oil.findMany({
+    const oils = await Oil.findMany({
       orderBy: { date: "desc" },
     });
 
@@ -57,7 +58,7 @@ export const getOilById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const oil = await prisma.oil.findUnique({ where: { id } });
+    const oil = await Oil.findUnique({ where: { id } });
 
     if (!oil) {
       return res.status(404).json({
@@ -94,7 +95,7 @@ export const updateOil = async (req, res) => {
       });
     }
 
-    const existing = await prisma.oil.findUnique({ where: { id } });
+    const existing = await Oil.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -103,7 +104,7 @@ export const updateOil = async (req, res) => {
       });
     }
 
-    const updated = await prisma.oil.update({
+    const updated = await Oil.update({
       where: { id },
       data: req.body,
     });
@@ -126,7 +127,7 @@ export const deleteOil = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.oil.findUnique({ where: { id } });
+    const existing = await Oil.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -138,7 +139,7 @@ export const deleteOil = async (req, res) => {
     await prisma.oil.delete({ where: { id } });
 
     res.status(200).json({
-      success: true,
+      success: true, 
       message: "Oil record deleted successfully.",
       data: null,
     });

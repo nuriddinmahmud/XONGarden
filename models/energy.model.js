@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database.js";
+import sequelize from "../config/database.js";
 
 const Energy = sequelize.define(
   "Energy",
@@ -16,7 +16,7 @@ const Energy = sequelize.define(
     },
 
     amountPaid: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 

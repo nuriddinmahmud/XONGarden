@@ -1,9 +1,8 @@
-import prisma from '../config/database.js';
-import Drainage from '../models/drenaj.model.js';
 import {
   createDrainageValidation,
   updateDrainageValidation,
-} from '../validations/drenaj.joi.js';
+} from "../validations/drenaj.joi.js";
+import Drainage from "../models/drenaj.model.js";
 
 export const createDrainage = async (req, res) => {
   try {
@@ -16,19 +15,17 @@ export const createDrainage = async (req, res) => {
       });
     }
 
-    const newDrainage = await Drainage.create({
-      data: req.body, 
-    });
+    const newDrainage = await Drainage.create(req.body);
 
     res.status(201).json({
       success: true,
-      message: 'Drainage record created successfully.',
+      message: "Drainage record created successfully.",
       data: newDrainage,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: 'Internal server error.',
+      message: "Internal server error.",
       error: err.message,
     });
   }
@@ -36,19 +33,19 @@ export const createDrainage = async (req, res) => {
 
 export const getAllDrainages = async (req, res) => {
   try {
-    const drainages = await prisma.drainage.findMany({
-      orderBy: { date: 'desc' },
+    const drainages = await Drainage.findAll({
+      order: [["date", "DESC"]],
     });
 
     res.status(200).json({
       success: true,
-      message: 'All drainage records fetched successfully.',
+      message: "All drainage records fetched successfully.",
       data: drainages,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: 'Internal server error.',
+      message: "Internal server error.",
       error: err.message,
     });
   }
@@ -58,27 +55,25 @@ export const getDrainageById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const drainage = await prisma.drainage.findUnique({
-      where: { id },
-    });
+    const drainage = await Drainage.findByPk(id);
 
     if (!drainage) {
       return res.status(404).json({
         success: false,
-        message: 'Drainage record not found.',
+        message: "Drainage record not found.",
         data: null,
       });
     }
 
     res.status(200).json({
       success: true,
-      message: 'Drainage record fetched successfully.',
+      message: "Drainage record fetched successfully.",
       data: drainage,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: 'Internal server error.',
+      message: "Internal server error.",
       error: err.message,
     });
   }
@@ -97,29 +92,26 @@ export const updateDrainage = async (req, res) => {
       });
     }
 
-    const existing = await prisma.drainage.findUnique({ where: { id } });
-    if (!existing) {
+    const drainage = await Drainage.findByPk(id);
+    if (!drainage) {
       return res.status(404).json({
         success: false,
-        message: 'Drainage record not found.',
+        message: "Drainage record not found.",
         data: null,
       });
     }
 
-    const updated = await prisma.drainage.update({
-      where: { id },
-      data: req.body,
-    });
+    await drainage.update(req.body);
 
     res.status(200).json({
       success: true,
-      message: 'Drainage record updated successfully.',
-      data: updated,
+      message: "Drainage record updated successfully.",
+      data: drainage,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: 'Internal server error.',
+      message: "Internal server error.",
       error: err.message,
     });
   }
@@ -129,28 +121,26 @@ export const deleteDrainage = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.drainage.findUnique({ where: { id } });
-    if (!existing) {
+    const drainage = await Drainage.findByPk(id);
+    if (!drainage) {
       return res.status(404).json({
         success: false,
-        message: 'Drainage record not found.',
+        message: "Drainage record not found.",
         data: null,
       });
     }
 
-    await prisma.drainage.delete({
-      where: { id },
-    });
+    await drainage.destroy();
 
     res.status(200).json({
       success: true,
-      message: 'Drainage record deleted successfully.',
+      message: "Drainage record deleted successfully.",
       data: null,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: 'Internal server error.',
+      message: "Internal server error.",
       error: err.message,
     });
   }

@@ -1,8 +1,9 @@
-import prisma from "../config/database.js";
 import {
   createFoodValidation,
   updateFoodValidation,
 } from "../validations/foods.joi.js";
+
+import Foods from "../models/foods.model.js";
 
 export const createFood = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ export const createFood = async (req, res) => {
       });
     }
 
-    const food = await prisma.food.create({
+    const food = await Foods.create({
       data: req.body,
     });
 
@@ -35,7 +36,7 @@ export const createFood = async (req, res) => {
 
 export const getAllFoods = async (req, res) => {
   try {
-    const foods = await prisma.food.findMany({
+    const foods = await Foods.findMany({
       orderBy: { date: "desc" },
     });
 
@@ -57,7 +58,7 @@ export const getFoodById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const food = await prisma.food.findUnique({ where: { id } });
+    const food = await Foods.findUnique({ where: { id } });
 
     if (!food) {
       return res.status(404).json({
@@ -94,7 +95,7 @@ export const updateFood = async (req, res) => {
       });
     }
 
-    const existing = await prisma.food.findUnique({ where: { id } });
+    const existing = await Foods.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -103,7 +104,7 @@ export const updateFood = async (req, res) => {
       });
     }
 
-    const updated = await prisma.food.update({
+    const updated = await Foods.update({
       where: { id },
       data: req.body,
     });
@@ -126,7 +127,7 @@ export const deleteFood = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.food.findUnique({ where: { id } });
+    const existing = await Foods.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -135,7 +136,7 @@ export const deleteFood = async (req, res) => {
       });
     }
 
-    await prisma.food.delete({ where: { id } });
+    await Foods.delete({ where: { id } });
 
     res.status(200).json({
       success: true,

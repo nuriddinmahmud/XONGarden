@@ -22,12 +22,12 @@ const Workers = sequelize.define(
     },
 
     salaryPerOne: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
     totalSalary: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
   },

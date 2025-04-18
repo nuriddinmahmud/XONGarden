@@ -1,8 +1,9 @@
-import prisma from "../config/database.js";
 import {
   createFertilizerValidation,
   updateFertilizerValidation,
 } from "../validations/fertilizer.joi.js";
+
+import Fertilizer from "../models/fertilizer.model.js";
 
 export const createFertilizer = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ export const createFertilizer = async (req, res) => {
       });
     }
 
-    const fertilizer = await prisma.fertilizer.create({
+    const fertilizer = await Fertilizer.create({
       data: req.body,
     });
 
@@ -35,7 +36,7 @@ export const createFertilizer = async (req, res) => {
 
 export const getAllFertilizers = async (req, res) => {
   try {
-    const fertilizers = await prisma.fertilizer.findMany({
+    const fertilizers = await Fertilizer.findMany({
       orderBy: { date: "desc" },
     });
 
@@ -57,7 +58,7 @@ export const getFertilizerById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const fertilizer = await prisma.fertilizer.findUnique({
+    const fertilizer = await Fertilizer.findUnique({
       where: { id },
     });
 
@@ -96,7 +97,7 @@ export const updateFertilizer = async (req, res) => {
       });
     }
 
-    const existing = await prisma.fertilizer.findUnique({ where: { id } });
+    const existing = await Fertilizer.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -105,7 +106,7 @@ export const updateFertilizer = async (req, res) => {
       });
     }
 
-    const updated = await prisma.fertilizer.update({
+    const updated = await Fertilizer.update({
       where: { id },
       data: req.body,
     });
@@ -128,7 +129,7 @@ export const deleteFertilizer = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.fertilizer.findUnique({ where: { id } });
+    const existing = await Fertilizer.findUnique({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -137,7 +138,7 @@ export const deleteFertilizer = async (req, res) => {
       });
     }
 
-    await prisma.fertilizer.delete({ where: { id } });
+    await Fertilizer.delete({ where: { id } });
 
     res.status(200).json({
       success: true,

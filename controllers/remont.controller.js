@@ -1,4 +1,3 @@
-import prisma from "../config/database.js";
 import {
   createRemontValidation,
   updateRemontValidation,
@@ -15,7 +14,7 @@ export const createRemont = async (req, res) => {
       });
     }
 
-    const remont = await prisma.remont.create({
+    const remont = await remont.create({
       data: req.body,
     });
 

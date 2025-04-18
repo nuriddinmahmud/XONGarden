@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database.js";
+import sequelize from "../config/database.js";
 
 const Drainage = sequelize.define(
   "Drainage",
@@ -17,18 +17,18 @@ const Drainage = sequelize.define(
     },
 
     hoursWorked: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
     totalSalary: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
 
   {
-    tableName: "Drainages",
+    tableName: "Drainage",
     timestamps: false,
   }
 );
