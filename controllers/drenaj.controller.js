@@ -1,4 +1,5 @@
 import prisma from '../config/database.js';
+import Drainage from '../models/drenaj.model.js';
 import {
   createDrainageValidation,
   updateDrainageValidation,
@@ -15,8 +16,8 @@ export const createDrainage = async (req, res) => {
       });
     }
 
-    const newDrainage = await prisma.drainage.create({
-      data: req.body,
+    const newDrainage = await Drainage.create({
+      data: req.body, 
     });
 
     res.status(201).json({
