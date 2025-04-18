@@ -1,9 +1,9 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize"; 
 
 const sequelize = new Sequelize({
   host: "localhost",
   username: "root",
-  password: "12345",
+  password: "1234",
   database: "xongarden",
   dialect: "mysql",
   logging: false,

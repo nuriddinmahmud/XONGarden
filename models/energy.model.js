@@ -9,17 +9,14 @@ const Energy = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-
     date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-
     amountPaid: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
     comment: {
       type: DataTypes.STRING,
       allowNull: false,

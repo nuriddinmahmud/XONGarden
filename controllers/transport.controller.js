@@ -1,4 +1,4 @@
-import prisma from "../config/database.js";
+import Transport from "../models/transport.model.js";
 import {
   createTransportValidation,
   updateTransportValidation,
@@ -15,9 +15,7 @@ export const createTransport = async (req, res) => {
       });
     }
 
-    const transport = await prisma.transport.create({
-      data: req.body,
-    });
+    const transport = await Transport.create(req.body);
 
     res.status(201).json({
       success: true,
@@ -35,8 +33,8 @@ export const createTransport = async (req, res) => {
 
 export const getAllTransports = async (req, res) => {
   try {
-    const transports = await prisma.transport.findMany({
-      orderBy: { date: "desc" },
+    const transports = await Transport.findAll({
+      order: [["date", "DESC"]],
     });
 
     res.status(200).json({
@@ -57,7 +55,7 @@ export const getTransportById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const transport = await prisma.transport.findUnique({ where: { id } });
+    const transport = await Transport.findByPk(id);
 
     if (!transport) {
       return res.status(404).json({
@@ -94,8 +92,8 @@ export const updateTransport = async (req, res) => {
       });
     }
 
-    const existing = await prisma.transport.findUnique({ where: { id } });
-    if (!existing) {
+    const transport = await Transport.findByPk(id);
+    if (!transport) {
       return res.status(404).json({
         success: false,
         message: "Transport record not found.",
@@ -103,15 +101,12 @@ export const updateTransport = async (req, res) => {
       });
     }
 
-    const updated = await prisma.transport.update({
-      where: { id },
-      data: req.body,
-    });
+    await transport.update(req.body);
 
     res.status(200).json({
       success: true,
       message: "Transport record updated successfully.",
-      data: updated,
+      data: transport,
     });
   } catch (err) {
     res.status(500).json({
@@ -126,8 +121,8 @@ export const deleteTransport = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.transport.findUnique({ where: { id } });
-    if (!existing) {
+    const transport = await Transport.findByPk(id);
+    if (!transport) {
       return res.status(404).json({
         success: false,
         message: "Transport record not found.",
@@ -135,7 +130,7 @@ export const deleteTransport = async (req, res) => {
       });
     }
 
-    await prisma.transport.delete({ where: { id } });
+    await transport.destroy();
 
     res.status(200).json({
       success: true,
@@ -150,4 +145,3 @@ export const deleteTransport = async (req, res) => {
     });
   }
 };
-

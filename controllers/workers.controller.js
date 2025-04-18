@@ -1,4 +1,4 @@
-import prisma from "../config/database.js";
+import Worker from "../models/worker.model.js";
 import {
   createWorkerValidation,
   updateWorkerValidation,
@@ -15,9 +15,7 @@ export const createWorker = async (req, res) => {
       });
     }
 
-    const worker = await prisma.worker.create({
-      data: req.body,
-    });
+    const worker = await Worker.create(req.body);
 
     res.status(201).json({
       success: true,
@@ -35,8 +33,8 @@ export const createWorker = async (req, res) => {
 
 export const getAllWorkers = async (req, res) => {
   try {
-    const workers = await prisma.worker.findMany({
-      orderBy: { date: "desc" },
+    const workers = await Worker.findAll({
+      order: [["date", "DESC"]],
     });
 
     res.status(200).json({
@@ -56,8 +54,7 @@ export const getAllWorkers = async (req, res) => {
 export const getWorkerById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-
-    const worker = await prisma.worker.findUnique({ where: { id } });
+    const worker = await Worker.findByPk(id);
 
     if (!worker) {
       return res.status(404).json({
@@ -84,7 +81,6 @@ export const getWorkerById = async (req, res) => {
 export const updateWorker = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-
     const { error } = updateWorkerValidation.validate(req.body);
     if (error) {
       return res.status(400).json({
@@ -94,8 +90,8 @@ export const updateWorker = async (req, res) => {
       });
     }
 
-    const existing = await prisma.worker.findUnique({ where: { id } });
-    if (!existing) {
+    const worker = await Worker.findByPk(id);
+    if (!worker) {
       return res.status(404).json({
         success: false,
         message: "Worker record not found.",
@@ -103,15 +99,12 @@ export const updateWorker = async (req, res) => {
       });
     }
 
-    const updated = await prisma.worker.update({
-      where: { id },
-      data: req.body,
-    });
+    await worker.update(req.body);
 
     res.status(200).json({
       success: true,
       message: "Worker record updated successfully.",
-      data: updated,
+      data: worker,
     });
   } catch (err) {
     res.status(500).json({
@@ -125,9 +118,8 @@ export const updateWorker = async (req, res) => {
 export const deleteWorker = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-
-    const existing = await prisma.worker.findUnique({ where: { id } });
-    if (!existing) {
+    const worker = await Worker.findByPk(id);
+    if (!worker) {
       return res.status(404).json({
         success: false,
         message: "Worker record not found.",
@@ -135,7 +127,7 @@ export const deleteWorker = async (req, res) => {
       });
     }
 
-    await prisma.worker.delete({ where: { id } });
+    await worker.destroy();
 
     res.status(200).json({
       success: true,

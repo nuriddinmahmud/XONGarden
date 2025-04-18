@@ -9,24 +9,20 @@ const Drainage = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-
     date: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-
     hoursWorked: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
     totalSalary: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
-
   {
     tableName: "Drainage",
     timestamps: false,
