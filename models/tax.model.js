@@ -12,7 +12,7 @@ const Tax = sequelize.define('Tax', {
     allowNull: false,
   },
   amountPaid: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.NUMBER,
     allowNull: false,
   },
   comment: {

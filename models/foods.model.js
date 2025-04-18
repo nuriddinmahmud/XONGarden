@@ -21,7 +21,7 @@ const Food = sequelize.define(
       },
     },
     price: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
       validate: {
         min: 0.01,

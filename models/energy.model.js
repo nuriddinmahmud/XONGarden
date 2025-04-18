@@ -13,7 +13,7 @@ const Energy = sequelize.define(
       allowNull: false,
     },
     amountPaid: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
       validate: {
         min: 0.01, 

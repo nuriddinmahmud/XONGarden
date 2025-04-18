@@ -12,7 +12,7 @@ const Repair = sequelize.define('Repair', {
     allowNull: false,
   },
   price: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.NUMBER,
     allowNull: false,
   },
   comment: {

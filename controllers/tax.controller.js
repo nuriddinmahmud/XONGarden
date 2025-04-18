@@ -1,4 +1,4 @@
-import prisma from "../config/database.js";
+import Tax from "../models/tax.model.js";
 import {
   createTaxValidation,
   updateTaxValidation,
@@ -15,9 +15,7 @@ export const createTax = async (req, res) => {
       });
     }
 
-    const tax = await prisma.tax.create({
-      data: req.body,
-    });
+    const tax = await Tax.create(req.body);
 
     res.status(201).json({
       success: true,
@@ -35,8 +33,8 @@ export const createTax = async (req, res) => {
 
 export const getAllTaxes = async (req, res) => {
   try {
-    const taxes = await prisma.tax.findMany({
-      orderBy: { date: "desc" },
+    const taxes = await Tax.findAll({
+      order: [["date", "DESC"]],
     });
 
     res.status(200).json({
@@ -57,7 +55,7 @@ export const getTaxById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const tax = await prisma.tax.findUnique({ where: { id } });
+    const tax = await Tax.findByPk(id);
 
     if (!tax) {
       return res.status(404).json({
@@ -94,7 +92,7 @@ export const updateTax = async (req, res) => {
       });
     }
 
-    const existing = await prisma.tax.findUnique({ where: { id } });
+    const existing = await Tax.findByPk(id);
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -103,15 +101,12 @@ export const updateTax = async (req, res) => {
       });
     }
 
-    const updated = await prisma.tax.update({
-      where: { id },
-      data: req.body,
-    });
+    await existing.update(req.body);
 
     res.status(200).json({
       success: true,
       message: "Tax record updated successfully.",
-      data: updated,
+      data: existing,
     });
   } catch (err) {
     res.status(500).json({
@@ -126,7 +121,7 @@ export const deleteTax = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.tax.findUnique({ where: { id } });
+    const existing = await Tax.findByPk(id);
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -135,7 +130,7 @@ export const deleteTax = async (req, res) => {
       });
     }
 
-    await prisma.tax.delete({ where: { id } });
+    await existing.destroy();
 
     res.status(200).json({
       success: true,

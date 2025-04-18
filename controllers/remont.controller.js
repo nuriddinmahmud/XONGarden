@@ -1,4 +1,4 @@
-import prisma from "../config/database.js";
+import Repair from "../models/repair.model.js";
 import {
   createRemontValidation,
   updateRemontValidation,
@@ -15,9 +15,7 @@ export const createRemont = async (req, res) => {
       });
     }
 
-    const remont = await prisma.remont.create({
-      data: req.body,
-    });
+    const remont = await Repair.create(req.body);
 
     res.status(201).json({
       success: true,
@@ -35,8 +33,8 @@ export const createRemont = async (req, res) => {
 
 export const getAllRemonts = async (req, res) => {
   try {
-    const remonts = await prisma.remont.findMany({
-      orderBy: { date: "desc" },
+    const remonts = await Repair.findAll({
+      order: [["date", "DESC"]],
     });
 
     res.status(200).json({
@@ -57,7 +55,7 @@ export const getRemontById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const remont = await prisma.remont.findUnique({ where: { id } });
+    const remont = await Repair.findByPk(id);
 
     if (!remont) {
       return res.status(404).json({
@@ -94,7 +92,7 @@ export const updateRemont = async (req, res) => {
       });
     }
 
-    const existing = await prisma.remont.findUnique({ where: { id } });
+    const existing = await Repair.findByPk(id);
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -103,15 +101,12 @@ export const updateRemont = async (req, res) => {
       });
     }
 
-    const updated = await prisma.remont.update({
-      where: { id },
-      data: req.body,
-    });
+    await existing.update(req.body);
 
     res.status(200).json({
       success: true,
       message: "Remont record updated successfully.",
-      data: updated,
+      data: existing,
     });
   } catch (err) {
     res.status(500).json({
@@ -126,7 +121,7 @@ export const deleteRemont = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const existing = await prisma.remont.findUnique({ where: { id } });
+    const existing = await Repair.findByPk(id);
     if (!existing) {
       return res.status(404).json({
         success: false,
@@ -135,7 +130,7 @@ export const deleteRemont = async (req, res) => {
       });
     }
 
-    await prisma.remont.delete({ where: { id } });
+    await existing.destroy();
 
     res.status(200).json({
       success: true,

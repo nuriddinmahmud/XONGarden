@@ -16,7 +16,7 @@ const Drainage = sequelize.define(
     },
 
     hoursWorked: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
       validate: {
         min: 0.01,
@@ -24,7 +24,7 @@ const Drainage = sequelize.define(
     },
 
     totalSalary: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
       validate: {
         min: 0.01,

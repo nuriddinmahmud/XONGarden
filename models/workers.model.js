@@ -19,14 +19,14 @@ const Worker = sequelize.define('Worker', {
     },
   },
   salaryPerOne: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.NUMBER,
     allowNull: false,
     validate: {
       min: 0.01,
     },
   },
   totalSalary: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.NUMBER,
     allowNull: true,
     validate: {
       min: 0.01,

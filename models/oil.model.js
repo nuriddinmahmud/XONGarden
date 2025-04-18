@@ -13,7 +13,7 @@ const Oil = sequelize.define(
       allowNull: false,
     },
     price: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.NUMBER,
       allowNull: false,
       validate: {
         min: 0.01,
