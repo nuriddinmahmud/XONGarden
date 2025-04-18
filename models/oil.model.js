@@ -8,23 +8,20 @@ const Oil = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+
     date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
+
     price: {
       type: DataTypes.NUMBER,
       allowNull: false,
-      validate: {
-        min: 0.01,
-      },
     },
+
     comment: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
   },
   {

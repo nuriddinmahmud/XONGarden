@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import Drainage from "../models/drainage.model.js";
+=======
+import prisma from '../config/database.js';
+import Drainage from '../models/drenaj.model.js';
+>>>>>>> 7cb734d7b6540f7b93b971e2d4b5964c72751fc5
 import {
   createDrainageValidation,
   updateDrainageValidation,
@@ -15,7 +20,13 @@ export const createDrainage = async (req, res) => {
       });
     }
 
+<<<<<<< HEAD
     const newDrainage = await Drainage.create(req.body);
+=======
+    const newDrainage = await Drainage.create({
+      data: req.body, 
+    });
+>>>>>>> 7cb734d7b6540f7b93b971e2d4b5964c72751fc5
 
     res.status(201).json({
       success: true,

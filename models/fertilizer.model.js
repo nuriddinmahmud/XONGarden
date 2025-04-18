@@ -1,3 +1,4 @@
+import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
 const Fertilizer = sequelize.define(
@@ -8,25 +9,27 @@ const Fertilizer = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+
     date: {
       type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        isDate: true,
-      },
     },
+
     type: {
       type: DataTypes.ENUM("mineral", "local"),
       allowNull: false,
     },
+
     machineCount: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+
     tonAmount: {
       type: DataTypes.NUMBER,
       allowNull: true,
     },
+
     comment: {
       type: DataTypes.STRING,
       allowNull: false,
