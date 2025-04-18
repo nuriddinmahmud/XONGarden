@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database.js";
+import sequelize from "../config/database.js";
 
 const Energy = sequelize.define(
   "Energy",
@@ -9,17 +9,14 @@ const Energy = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-
     date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-
     amountPaid: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER, // ✅ TO‘G‘RILANGAN
       allowNull: false,
     },
-
     comment: {
       type: DataTypes.STRING,
       allowNull: false,

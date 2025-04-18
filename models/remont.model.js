@@ -14,7 +14,7 @@ const Repair = sequelize.define(
       allowNull: false,
     },
     price: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     comment: {

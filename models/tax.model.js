@@ -14,7 +14,7 @@ const Tax = sequelize.define(
       allowNull: false,
     },
     amountPaid: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     comment: {

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database.js";
+import sequelize from "../config/database.js"; // ✅ TO‘G‘RI
 
 const Drainage = sequelize.define(
   "Drainage",
@@ -9,24 +9,20 @@ const Drainage = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-
     date: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-
     hoursWorked: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER, // yoki INTEGER – raqam bo‘lsa
       allowNull: false,
     },
-
     totalSalary: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER, // yoki DECIMAL
       allowNull: false,
     },
   },
-
   {
     tableName: "Drainages",
     timestamps: false,
