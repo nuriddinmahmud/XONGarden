@@ -7,7 +7,7 @@ import Energy from "../models/energy.model.js";
 
 export const createEnergy = async (req, res) => {
   try {
-    const { error } = createEnergyValidation.validate(req.body);
+    const { error, value } = createEnergyValidation.validate(req.body);
     if (error) {
       return res.status(400).json({
         success: false,
@@ -17,7 +17,8 @@ export const createEnergy = async (req, res) => {
     }
 
     const energy = await Energy.create({
-      data: req.body,
+      data: value,
+      date: new Date().toISOString(),
     });
 
     res.status(201).json({
@@ -36,7 +37,7 @@ export const createEnergy = async (req, res) => {
 
 export const getAllEnergies = async (req, res) => {
   try {
-    const energies = await Energy.findMany({
+    const energies = await Energy.findAll({
       orderBy: { date: "desc" },
     });
 
@@ -58,7 +59,7 @@ export const getEnergyById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const energy = await Energy.findUnique({ where: { id } });
+    const energy = await Energy.findOne({ where: { id } });
 
     if (!energy) {
       return res.status(404).json({

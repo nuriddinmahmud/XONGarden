@@ -17,6 +17,7 @@ import "./models/workers.model.js";
 // Swagger imports
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import Mainrouter from "./route/main.js";
 
 dotenv.config();
 
@@ -52,13 +53,17 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "API is working ✅" });
 });
 
+app.use("/api", Mainrouter);
+
 async function connectDB() {
   try {
     await sequelize.sync();
     console.log("✅ All tables synced successfully.");
 
     app.listen(PORT, () =>
-      console.log(`🚀 Server running on http://localhost:${PORT}\n📘 Swagger UI: http://localhost:${PORT}/api-docs`)
+      console.log(
+        `🚀 Server running on http://localhost:${PORT}\n📘 Swagger UI: http://localhost:${PORT}/api-docs`
+      )
     );
   } catch (error) {
     console.error("❌ Database connection failed:", error.message);

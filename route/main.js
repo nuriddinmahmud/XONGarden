@@ -10,17 +10,17 @@ import userRoutes from "./user.routes.js";
 import oilRoutes from "./oil.routes.js";
 import taxRoutes from "./tax.routes.js";
 
-const router = express.Router();
+const Mainrouter = express.Router();
 
-router.use("/fertilizers", fertilizerRoutes);
-router.use("/transports", transportRoutes);
-router.use("/remonts", remontRoutes);
-router.use("/workers", workerRoutes);
-router.use("/drenaj", drenajRoutes);
-router.use("/energy", energyRoutes);
-router.use("/foods", foodRoutes);
-router.use("/users", userRoutes);
-router.use("/taxes", taxRoutes);
-router.use("/oils", oilRoutes);
+Mainrouter.use("/fertilizers", fertilizerRoutes);
+Mainrouter.use("/transports", transportRoutes);
+Mainrouter.use("/remonts", remontRoutes);
+Mainrouter.use("/workers", workerRoutes);
+Mainrouter.use("/drenaj", drenajRoutes);
+Mainrouter.use("/energy", energyRoutes);
+Mainrouter.use("/foods", foodRoutes);
+Mainrouter.use("/users", userRoutes);
+Mainrouter.use("/taxes", taxRoutes);
+Mainrouter.use("/oils", oilRoutes);
 
-export default router;
+export default Mainrouter;

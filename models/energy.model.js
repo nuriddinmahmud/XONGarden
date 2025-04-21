@@ -11,15 +11,17 @@ const Energy = sequelize.define(
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     amountPaid: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: 25000,
     },
     comment: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: "very nice",
     },
   },
   {

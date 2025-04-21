@@ -36,7 +36,7 @@ export const createFood = async (req, res) => {
 
 export const getAllFoods = async (req, res) => {
   try {
-    const foods = await Foods.findMany({
+    const foods = await Foods.findAll({
       orderBy: { date: "desc" },
     });
 
@@ -58,7 +58,7 @@ export const getFoodById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    const food = await Foods.findUnique({ where: { id } });
+    const food = await Foods.findOne({ where: { id } });
 
     if (!food) {
       return res.status(404).json({
@@ -95,7 +95,7 @@ export const updateFood = async (req, res) => {
       });
     }
 
-    const existing = await Foods.findUnique({ where: { id } });
+    const existing = await Foods.findOne({ where: { id } });
     if (!existing) {
       return res.status(404).json({
         success: false,

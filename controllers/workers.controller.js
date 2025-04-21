@@ -1,4 +1,4 @@
-import Worker from "../models/worker.model.js";
+import Worker from "../models/workers.model.js";
 import {
   createWorkerValidation,
   updateWorkerValidation,

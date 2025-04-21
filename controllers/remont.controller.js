@@ -1,4 +1,4 @@
-import Repair from "../models/repair.model.js";
+import Repair from "../models/remont.model.js";
 import {
   createRemontValidation,
   updateRemontValidation,
