@@ -26,7 +26,7 @@ export const createFood = async (req, res) => {
       data: food,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -46,7 +46,7 @@ export const getAllFoods = async (req, res) => {
       data: foods,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -74,7 +74,7 @@ export const getFoodById = async (req, res) => {
       data: food,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -115,7 +115,7 @@ export const updateFood = async (req, res) => {
       data: updated,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -144,7 +144,7 @@ export const deleteFood = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

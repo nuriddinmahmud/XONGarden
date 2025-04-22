@@ -26,7 +26,7 @@ export const createOil = async (req, res) => {
       data: oil,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -46,7 +46,7 @@ export const getAllOils = async (req, res) => {
       data: oils,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -74,7 +74,7 @@ export const getOilById = async (req, res) => {
       data: oil,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -115,7 +115,7 @@ export const updateOil = async (req, res) => {
       data: updated,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -144,7 +144,7 @@ export const deleteOil = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

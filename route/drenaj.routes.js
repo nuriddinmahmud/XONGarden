@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Drainage record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createDrainage);
@@ -62,7 +62,7 @@ router.post('/', createDrainage);
  *     responses:
  *       200:
  *         description: List of drainage records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllDrainages);
@@ -85,7 +85,7 @@ router.get('/', getAllDrainages);
  *         description: Drainage record fetched successfully
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getDrainageById);
@@ -119,7 +119,7 @@ router.get('/:id', getDrainageById);
  *                 example: 10
  *               totalSalary:
  *                 type: integer
- *                 example: 150000
+ *                 example: 140000
  *     responses:
  *       200:
  *         description: Record updated successfully
@@ -127,7 +127,7 @@ router.get('/:id', getDrainageById);
  *         description: Validation error
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateDrainage);
@@ -150,7 +150,7 @@ router.patch('/:id', updateDrainage);
  *         description: Record deleted successfully
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteDrainage);

@@ -16,7 +16,7 @@ const Energy = sequelize.define(
     amountPaid: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: 25000,
+      defaultValue: 24000,
     },
     comment: {
       type: DataTypes.STRING,

@@ -27,7 +27,7 @@ export const createEnergy = async (req, res) => {
       data: energy,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -47,7 +47,7 @@ export const getAllEnergies = async (req, res) => {
       data: energies,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -75,7 +75,7 @@ export const getEnergyById = async (req, res) => {
       data: energy,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -116,7 +116,7 @@ export const updateEnergy = async (req, res) => {
       data: updated,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -145,7 +145,7 @@ export const deleteEnergy = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

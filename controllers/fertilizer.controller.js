@@ -26,7 +26,7 @@ export const createFertilizer = async (req, res) => {
       data: fertilizer,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -46,7 +46,7 @@ export const getAllFertilizers = async (req, res) => {
       data: fertilizers,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -76,7 +76,7 @@ export const getFertilizerById = async (req, res) => {
       data: fertilizer,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -117,7 +117,7 @@ export const updateFertilizer = async (req, res) => {
       data: updated,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -146,7 +146,7 @@ export const deleteFertilizer = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

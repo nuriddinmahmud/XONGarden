@@ -39,7 +39,7 @@ const router = express.Router();
  *                 example: 2025-04-25
  *               amountPaid:
  *                 type: integer
- *                 example: 150000
+ *                 example: 140000
  *               comment:
  *                 type: string
  *                 example: "Yer solig'i"
@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Tax record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createTax);
@@ -62,7 +62,7 @@ router.post('/', createTax);
  *     responses:
  *       200:
  *         description: List of tax records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllTaxes);
@@ -85,7 +85,7 @@ router.get('/', getAllTaxes);
  *         description: Tax record fetched successfully
  *       404:
  *         description: Tax record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getTaxById);
@@ -116,7 +116,7 @@ router.get('/:id', getTaxById);
  *                 example: 2025-04-28
  *               amountPaid:
  *                 type: integer
- *                 example: 175000
+ *                 example: 174000
  *               comment:
  *                 type: string
  *                 example: "Sug'urta uchun to'lov"
@@ -127,7 +127,7 @@ router.get('/:id', getTaxById);
  *         description: Validation error
  *       404:
  *         description: Tax record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateTax);
@@ -150,7 +150,7 @@ router.patch('/:id', updateTax);
  *         description: Tax record deleted successfully
  *       404:
  *         description: Tax record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteTax);

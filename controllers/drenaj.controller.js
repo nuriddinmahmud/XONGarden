@@ -23,7 +23,7 @@ export const createDrainage = async (req, res) => {
       data: newDrainage,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -43,7 +43,7 @@ export const getAllDrainages = async (req, res) => {
       data: drainages,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -71,7 +71,7 @@ export const getDrainageById = async (req, res) => {
       data: drainage,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -109,7 +109,7 @@ export const updateDrainage = async (req, res) => {
       data: drainage,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -138,7 +138,7 @@ export const deleteDrainage = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

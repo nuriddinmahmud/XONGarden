@@ -23,7 +23,7 @@ export const createTransport = async (req, res) => {
       data: transport,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -43,7 +43,7 @@ export const getAllTransports = async (req, res) => {
       data: transports,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -71,7 +71,7 @@ export const getTransportById = async (req, res) => {
       data: transport,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -109,7 +109,7 @@ export const updateTransport = async (req, res) => {
       data: transport,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -138,7 +138,7 @@ export const deleteTransport = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

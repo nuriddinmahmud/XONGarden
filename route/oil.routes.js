@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Oil record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createOil);
@@ -62,7 +62,7 @@ router.post('/', createOil);
  *     responses:
  *       200:
  *         description: List of oil records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllOils);
@@ -85,7 +85,7 @@ router.get('/', getAllOils);
  *         description: Oil record fetched successfully
  *       404:
  *         description: Oil record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getOilById);
@@ -127,7 +127,7 @@ router.get('/:id', getOilById);
  *         description: Validation error
  *       404:
  *         description: Oil record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateOil);
@@ -150,7 +150,7 @@ router.patch('/:id', updateOil);
  *         description: Oil record deleted successfully
  *       404:
  *         description: Oil record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteOil);

@@ -23,7 +23,7 @@ export const createTax = async (req, res) => {
       data: tax,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -43,7 +43,7 @@ export const getAllTaxes = async (req, res) => {
       data: taxes,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -71,7 +71,7 @@ export const getTaxById = async (req, res) => {
       data: tax,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -109,7 +109,7 @@ export const updateTax = async (req, res) => {
       data: existing,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -138,7 +138,7 @@ export const deleteTax = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Food record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post("/", createFood);
@@ -62,7 +62,7 @@ router.post("/", createFood);
  *     responses:
  *       200:
  *         description: List of all food records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get("/", getAllFoods);
@@ -85,7 +85,7 @@ router.get("/", getAllFoods);
  *         description: Food record fetched successfully
  *       404:
  *         description: Food record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get("/:id", getFoodById);
@@ -119,7 +119,7 @@ router.get("/:id", getFoodById);
  *                 example: "Korzinka"
  *               price:
  *                 type: integer
- *                 example: 95000
+ *                 example: 94000
  *     responses:
  *       200:
  *         description: Food record updated successfully
@@ -127,7 +127,7 @@ router.get("/:id", getFoodById);
  *         description: Validation error
  *       404:
  *         description: Food record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch("/:id", updateFood);
@@ -150,7 +150,7 @@ router.patch("/:id", updateFood);
  *         description: Food record deleted successfully
  *       404:
  *         description: Food record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete("/:id", deleteFood);

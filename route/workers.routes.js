@@ -42,16 +42,16 @@ const router = express.Router();
  *                 example: 10
  *               salaryPerOne:
  *                 type: integer
- *                 example: 50000
+ *                 example: 40000
  *               totalSalary:
  *                 type: integer
- *                 example: 500000
+ *                 example: 400000
  *     responses:
  *       201:
  *         description: Worker payroll record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createWorker);
@@ -65,7 +65,7 @@ router.post('/', createWorker);
  *     responses:
  *       200:
  *         description: List of worker records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllWorkers);
@@ -88,7 +88,7 @@ router.get('/', getAllWorkers);
  *         description: Worker record fetched successfully
  *       404:
  *         description: Worker record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getWorkerById);
@@ -133,7 +133,7 @@ router.get('/:id', getWorkerById);
  *         description: Validation error
  *       404:
  *         description: Worker record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateWorker);
@@ -156,7 +156,7 @@ router.patch('/:id', updateWorker);
  *         description: Worker record deleted successfully
  *       404:
  *         description: Worker record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteWorker);

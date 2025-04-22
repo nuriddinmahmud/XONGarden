@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Remont record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createRemont);
@@ -62,7 +62,7 @@ router.post('/', createRemont);
  *     responses:
  *       200:
  *         description: List of all remont records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllRemonts);
@@ -85,7 +85,7 @@ router.get('/', getAllRemonts);
  *         description: Remont record fetched successfully
  *       404:
  *         description: Remont record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getRemontById);
@@ -116,7 +116,7 @@ router.get('/:id', getRemontById);
  *                 example: 2025-04-22
  *               price:
  *                 type: integer
- *                 example: 500000
+ *                 example: 400000
  *               comment:
  *                 type: string
  *                 example: "Yangi qismlar o‘rnatildi"
@@ -127,7 +127,7 @@ router.get('/:id', getRemontById);
  *         description: Validation error
  *       404:
  *         description: Remont record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateRemont);
@@ -150,7 +150,7 @@ router.patch('/:id', updateRemont);
  *         description: Remont record deleted successfully
  *       404:
  *         description: Remont record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteRemont);

@@ -23,7 +23,7 @@ export const createWorker = async (req, res) => {
       data: worker,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -43,7 +43,7 @@ export const getAllWorkers = async (req, res) => {
       data: workers,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -70,7 +70,7 @@ export const getWorkerById = async (req, res) => {
       data: worker,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -107,7 +107,7 @@ export const updateWorker = async (req, res) => {
       data: worker,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -135,7 +135,7 @@ export const deleteWorker = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

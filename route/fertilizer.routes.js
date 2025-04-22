@@ -56,7 +56,7 @@ const router = express.Router();
  *         description: Fertilizer record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createFertilizer);
@@ -70,7 +70,7 @@ router.post('/', createFertilizer);
  *     responses:
  *       200:
  *         description: List of all fertilizers
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllFertilizers);
@@ -93,7 +93,7 @@ router.get('/', getAllFertilizers);
  *         description: Fertilizer fetched successfully
  *       404:
  *         description: Fertilizer not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getFertilizerById);
@@ -142,7 +142,7 @@ router.get('/:id', getFertilizerById);
  *         description: Validation error
  *       404:
  *         description: Fertilizer not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateFertilizer);
@@ -165,7 +165,7 @@ router.patch('/:id', updateFertilizer);
  *         description: Fertilizer deleted successfully
  *       404:
  *         description: Fertilizer not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteFertilizer);

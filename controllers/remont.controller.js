@@ -23,7 +23,7 @@ export const createRemont = async (req, res) => {
       data: remont,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -43,7 +43,7 @@ export const getAllRemonts = async (req, res) => {
       data: remonts,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -71,7 +71,7 @@ export const getRemontById = async (req, res) => {
       data: remont,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -109,7 +109,7 @@ export const updateRemont = async (req, res) => {
       data: existing,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,
@@ -138,7 +138,7 @@ export const deleteRemont = async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: "Internal server error.",
       error: err.message,

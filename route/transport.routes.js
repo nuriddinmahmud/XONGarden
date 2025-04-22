@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Transport record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createTransport);
@@ -62,7 +62,7 @@ router.post('/', createTransport);
  *     responses:
  *       200:
  *         description: List of all transport records
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllTransports);
@@ -85,7 +85,7 @@ router.get('/', getAllTransports);
  *         description: Transport record fetched successfully
  *       404:
  *         description: Transport record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getTransportById);
@@ -127,7 +127,7 @@ router.get('/:id', getTransportById);
  *         description: Validation error
  *       404:
  *         description: Transport record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateTransport);
@@ -150,7 +150,7 @@ router.patch('/:id', updateTransport);
  *         description: Transport record deleted successfully
  *       404:
  *         description: Transport record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteTransport);

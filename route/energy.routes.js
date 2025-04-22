@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Record created successfully
  *       400:
  *         description: Validation error
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.post('/', createEnergy);
@@ -62,7 +62,7 @@ router.post('/', createEnergy);
  *     responses:
  *       200:
  *         description: List of energy payments
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/', getAllEnergies);
@@ -85,7 +85,7 @@ router.get('/', getAllEnergies);
  *         description: Energy payment fetched successfully
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.get('/:id', getEnergyById);
@@ -127,7 +127,7 @@ router.get('/:id', getEnergyById);
  *         description: Validation error
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.patch('/:id', updateEnergy);
@@ -150,7 +150,7 @@ router.patch('/:id', updateEnergy);
  *         description: Record deleted successfully
  *       404:
  *         description: Record not found
- *       500:
+ *       400:
  *         description: Internal server error
  */
 router.delete('/:id', deleteEnergy);
